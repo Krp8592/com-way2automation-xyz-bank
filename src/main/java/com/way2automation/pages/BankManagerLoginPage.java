@@ -1,14 +1,22 @@
 package com.way2automation.pages;
 
 import com.way2automation.utility.Utility;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created By Kashyap patel
  */
 public class BankManagerLoginPage extends Utility {
+    private static final Logger log = LogManager.getLogger(BankManagerLoginPage.class.getName());
+
+    public BankManagerLoginPage() {
+        PageFactory.initElements(driver,this);
+    }
     // click On "Open Account" Tab
     @CacheLookup
     @FindBy(xpath = "//button[normalize-space()='Open Account']")
@@ -29,22 +37,26 @@ public class BankManagerLoginPage extends Utility {
     // click On "Open Account" Tab
     public void clickOnOpenAccount() throws InterruptedException {
         Thread.sleep(1000);
+        log.info("Click on open account");
         clickOnElement(openAccount);
     }
     // Search customer that created in first test
     public void clickAndSelectCustomerName() throws InterruptedException {
         Thread.sleep(1000);
         // clickOnElement(By.xpath("//select[@id='userSelect']"));
+        log.info("Click and select customer name");
         selectByVisibleTextFromDropDown(searchCustomer,"Harry Potter");
     }
     //Select currency "Pound"
     public void selectCurrency(String currencyText) throws InterruptedException {
         Thread.sleep(1000);
+        log.info("Select currency");
         selectByVisibleTextFromDropDown(currency,currencyText);
     }
     // 	click on "process" button
     public void clickOnProcessButton() throws InterruptedException {
         Thread.sleep(1000);
+        log.info("CLick on process button");
         clickOnElement(process);
     }
 

@@ -1,15 +1,22 @@
 package com.way2automation.pages;
 
 import com.way2automation.utility.Utility;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created By Kashyap patel
  */
 public class AccountPage extends Utility {
+    private static final Logger log = LogManager.getLogger(AccountPage.class.getName());
 
+    public AccountPage() {
+        PageFactory.initElements(driver,this);
+    }
     // click on "Deposit" Tab
     @CacheLookup
     @FindBy(xpath = "//button[normalize-space()='Deposit']")
@@ -47,48 +54,56 @@ public class AccountPage extends Utility {
     //click on "Deposit" Tab
     public void clickOnDepositTab() throws InterruptedException {
         Thread.sleep(1000);
+        log.info("Click on deposit tab");
         clickOnElement(deposit);
     }
 
     // Enter amount 100
     public void enterAmount(String amount) throws InterruptedException {
         Thread.sleep(1000);
+        log.info("Enter amount");
         sendTextToElement(amountTab, amount);
     }
 
     //click on "Deposit" Button
     public void clickDepositTab() throws InterruptedException {
         Thread.sleep(1000);
+        log.info("Click on deposit tab");
         clickOnElement(clickDeposit);
     }
 
     // verify message "Deposit Successful"
     public String verifyDepositSuccessfullyTextMessage() throws InterruptedException {
         Thread.sleep(1000);
+        log.info("Get deposit successfully tab");
         return getTextFromElement(depositSuccessfullyText);
     }
 
     //click on "Withdrawl" Tab
     public void clickOnWithdrawl() throws InterruptedException {
         Thread.sleep(1000);
+        log.info("Click on withdrawl");
         clickOnElement(withdrawl);
     }
 
     //Enter amount 50
     public void enterWithdrawlAmount(String amount) throws InterruptedException {
         Thread.sleep(1000);
+        log.info("Enter withdrawl amount");
         sendTextToElement(withdrawalAmountTab, amount);
     }
 
     //click on "Deposit" Button
     public void clickOnWithdrawTransactionTab() throws InterruptedException {
         Thread.sleep(1000);
+        log.info("Click on withdrawl transaction tab");
         clickOnElement(withdrawTab);
     }
 
     //	verify message "Transaction Successful"
     public String verifyWithdrawalSuccessfullyTextMessage() throws InterruptedException {
         Thread.sleep(1000);
+        log.info("Get withdrawl successful tab");
         return getTextFromElement(withdrawalSuccessfullyText);
     }
 }
